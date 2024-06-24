@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+  <Brush x:Key="DiscordBlue">#7289da</Brush>
+  <Brush x:Key="DiscordLightGray">#424549</Brush>
+  <Brush x:Key="DiscordDarkGray">#36393e</Brush>
+  <Brush x:Key="DiscordDarkerGray">#282b30</Brush>
+  <Brush x:Key="DiscordDarkestGray">#1e2124</Brush>
+  <Brush x:Key="FontColor">#FFFFFF</Brush>
+</ResourceDictionary>

@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+  <Style x:Key="TasksScrollBar"
+         TargetType="ScrollBar"
+         >
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ScrollBar">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <RepeatButton Grid.Row="0"
+                          Command="ScrollBar.LineDownCommand"
+                          Style="{StaticResource CustomRepeatButtonStyle}"
+                          >
+              <Path Data="M 0 0 L 8 0 L 4 4 Z"
+                    Fill="Gray"
+                    />
+            </RepeatButton>
+
+            <Track x:Name="PART_Track"
+                   Grid.Row="1"
+                   IsDirectionReversed="True"
+                   >
+              <Track.DecreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageDownCommand"
+                              Style="{StaticResource CustomTrackButtonStyle}"
+                              />
+              </Track.DecreaseRepeatButton>
+              <Track.Thumb>
+                <Thumb Style="{StaticResource CustomThumbStyle}" />
+              </Track.Thumb>
+              <Track.IncreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageUpCommand"
+                              Style="{StaticResource CustomTrackButtonStyle}"
+                              />
+              </Track.IncreaseRepeatButton>
+            </Track>
+
+            <RepeatButton Grid.Row="2"
+                          Command="ScrollBar.LineUpCommand"
+                          Style="{StaticResource CustomRepeatButtonStyle}"
+                          >
+              <Path Data="M 0 4 L 8 4 L 4 0 Z"
+                    Fill="Gray"
+                    />
+            </RepeatButton>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

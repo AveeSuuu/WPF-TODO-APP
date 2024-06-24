@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TODO_List.ViewModels;
 
 namespace TODO_List;
 
@@ -16,6 +17,11 @@ namespace TODO_List;
 /// </summary>
 public partial class MainWindow : Window {
   public MainWindow() {
+    DataContext = new MainWindowViewModel();
     InitializeComponent();
+  }
+
+  void DragOnMoveListener(object sender, MouseButtonEventArgs e) {
+    DragMove();
   }
 }

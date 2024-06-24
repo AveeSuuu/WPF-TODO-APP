@@ -1,8 +1,30 @@
 ﻿<Application x:Class="TODO_List.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ViewModels="clr-namespace:TODO_List.ViewModels"
+             xmlns:Views="clr-namespace:TODO_List.Views"
              xmlns:local="clr-namespace:TODO_List"
              StartupUri="Views/MainWindow.xaml"
              >
-  <Application.Resources />
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Utilities/Styles/TaskButton.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/Colors.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/TaskTextStyles.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/RepeatButtonStyle.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/TrackButtonStyle.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/ThumbStyle.xaml" />
+
+        <ResourceDictionary Source="Utilities/Styles/ScrollBarStyle.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <DataTemplate x:Key="TaskTemplate"
+                    DataType="{x:Type ViewModels:TaskViewModel}"
+                    >
+        <Views:TaskView />
+      </DataTemplate>
+
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>
