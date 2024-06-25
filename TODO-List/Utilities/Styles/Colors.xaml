@@ -7,4 +7,5 @@
   <Brush x:Key="DiscordDarkerGray">#282b30</Brush>
   <Brush x:Key="DiscordDarkestGray">#1e2124</Brush>
   <Brush x:Key="FontColor">#FFFFFF</Brush>
+  <Brush x:Key="VeryLightGray">#80848a</Brush>
 </ResourceDictionary>

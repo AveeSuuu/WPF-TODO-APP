@@ -1,7 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Runtime.Serialization.DataContracts;
 using System.Windows;
 using System.Windows.Input;
 using TODO_List.Utilities;
+using TODO_List.Utilities.XML;
+using TODO_List.Views;
 
 namespace TODO_List.ViewModels;
 
@@ -10,14 +13,15 @@ public class MainWindowViewModel : ViewModel {
  public ICommand MinimizeAppCommand { get; }
  public ICommand CloseAppCommand { get; }
  public ICommand AddNewTaskCommand { get; }
- static int indexer = 0; 
+ public ICommand SaveTasksCommand { get;  }
  
  public MainWindowViewModel() {
-  Tasks = new();
-  //logika do wczytywania z xml
+  var xmlReader = new XmlTasksReader();
+  Tasks = xmlReader.Read();
   MinimizeAppCommand = new RelayCommand(minimizeApp);
   CloseAppCommand = new RelayCommand(closeApp);
   AddNewTaskCommand = new RelayCommand(addNewTask);
+  SaveTasksCommand = new RelayCommand(saveTasksToXml);
  }
 
  private void minimizeApp(object sender) {
@@ -25,16 +29,27 @@ public class MainWindowViewModel : ViewModel {
  }
 
  private void closeApp(object sender) {
-  //zapisanie rzeczy do xml
+  saveTasksToXml();
   Application.Current.Shutdown();
  }
  
  private void addNewTask(object sender) {
-  var task = new TaskViewModel(Tasks) {
-   TaskTitle = $"Task nr.{indexer++}",
-   TaskDescription = $"Task description..."
-  };
+  var insertViewModel = new InsertViewModel();
+  var insertView = new InsertView(){ DataContext = insertViewModel};
+  insertView.ShowDialog();
 
-  Tasks.Add(task);
+  var task = new TaskViewModel(Tasks) {
+   TaskTitle = insertViewModel.TaskTitle,
+   TaskDescription = insertViewModel.TaskDescription,
+   TaskStatus = false
+  };
+  if (insertView.DialogResult == true) {
+    Tasks.Add(task);
+  }
+ }
+
+ private void saveTasksToXml(object sender = null) {
+  var writer = new XmlTasksWriter();
+  writer.Write(Tasks);
  }
 }

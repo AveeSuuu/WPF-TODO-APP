@@ -1,33 +1,36 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using TODO_List.Models;
 using TODO_List.Utilities;
+using TODO_List.Views;
+
 namespace TODO_List.ViewModels;
 
 public class TaskViewModel : ViewModel {
-  string _taskTitle;
-  string _taskDescription;
-  bool _taskStatus;
-
-  public string TaskTitle {
-    get => _taskTitle;
+  readonly TaskModel _task;
+  
+  public string? TaskTitle {
+    get => _task.TaskTitle;
     set {
-      _taskTitle = value;
+      _task.TaskTitle = value;
       OnPropertyChanged();
     }
   }
 
-  public string TaskDescription {
-    get => _taskDescription;
+  public string? TaskDescription {
+    get => _task.TaskDescription;
     set {
-      _taskDescription = value;
+      _task.TaskDescription = value;
       OnPropertyChanged();
     }
   }
 
-  bool TaskStatus {
-    get => _taskStatus;
+  public bool TaskStatus {
+    get => _task.TaskStatus;
     set {
-      _taskStatus = value;
+      _task.TaskStatus = value;
       OnPropertyChanged();
     }
   }
@@ -36,19 +39,24 @@ public class TaskViewModel : ViewModel {
   public ICommand DeleteTaskCommand { get; }
 
   readonly ObservableCollection<TaskViewModel> _tasks;
-  
+
   public TaskViewModel(ObservableCollection<TaskViewModel> tasks) {
-    _taskStatus = false;
+    _task = new TaskModel() {
+      TaskStatus = false
+    };
     _tasks = tasks;
     FinishTaskCommand = new RelayCommand(finishTask);
     DeleteTaskCommand = new RelayCommand(deleteTask);
   }
 
   private void finishTask(object sender) {
-    _taskStatus = true;
+    TaskStatus = !TaskStatus;
   }
 
   private void deleteTask(object sender) {
+    if (!TaskStatus) {
+    
+    }
     _tasks.Remove(this);
   }
 }

@@ -1,0 +1,77 @@
+﻿<Window x:Class="TODO_List.Views.InsertView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ViewModels="clr-namespace:TODO_List.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TODO_List.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="New task"
+        Width="350"
+        Height="250"
+        d:DataContext="{d:DesignInstance Type=ViewModels:InsertViewModel}"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d"
+        >
+  <Border Background="{DynamicResource DiscordDarkerGray}"
+          BorderBrush="{DynamicResource DiscordBlue}"
+          BorderThickness="1.5"
+          CornerRadius="10"
+          >
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="auto" />
+      </Grid.RowDefinitions>
+      <Border Grid.Row="0"
+              Background="{DynamicResource DiscordDarkestGray}"
+              CornerRadius="10, 10, 0, 0"
+              >
+        <TextBlock Style="{StaticResource TaskTitleStyle}"
+                   Text="NEW TASK"
+                   />
+      </Border>
+      <TextBlock Grid.Row="1"
+                 Style="{StaticResource TaskTitleStyle}"
+                 Text="Title"
+                 />
+      <TextBox Grid.Row="2"
+               Height="30"
+               Style="{StaticResource InsertTextBoxStyle}"
+               Text="{Binding TaskTitle}"
+               />
+      <TextBlock Grid.Row="3"
+                 Style="{StaticResource TaskTitleStyle}"
+                 Text="Description"
+                 />
+      <TextBox Grid.Row="4"
+               Height="auto"
+               MinHeight="30"
+               VerticalAlignment="Stretch"
+               VerticalContentAlignment="Top"
+               Foreground="White"
+               Style="{StaticResource InsertTextBoxStyle}"
+               Text="{Binding TaskDescription}"
+               />
+      <DockPanel Grid.Row="5"
+                 HorizontalAlignment="Center"
+                 >
+        <Button Command="{Binding CancelCommand}"
+                Content="CANCEL"
+                Style="{StaticResource NewTaskButtonStyle}"
+                />
+        <Button Command="{Binding AddCommand}"
+                Content="ADD"
+                Style="{StaticResource NewTaskButtonStyle}"
+                />
+
+      </DockPanel>
+    </Grid>
+  </Border>
+</Window>

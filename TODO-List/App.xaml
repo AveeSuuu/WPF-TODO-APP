@@ -9,14 +9,16 @@
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Utilities/Styles/TaskButton.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/TaskButtonStyles.xaml" />
         <ResourceDictionary Source="Utilities/Styles/Colors.xaml" />
         <ResourceDictionary Source="Utilities/Styles/TaskTextStyles.xaml" />
         <ResourceDictionary Source="Utilities/Styles/RepeatButtonStyle.xaml" />
         <ResourceDictionary Source="Utilities/Styles/TrackButtonStyle.xaml" />
         <ResourceDictionary Source="Utilities/Styles/ThumbStyle.xaml" />
-
+        <ResourceDictionary Source="Utilities/Styles/MainWindowButtonStyle.xaml" />
         <ResourceDictionary Source="Utilities/Styles/ScrollBarStyle.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/InsertTextBoxStyle.xaml" />
+        <ResourceDictionary Source="Utilities/Styles/NewTaskButtonStyle.xaml" />
       </ResourceDictionary.MergedDictionaries>
 
       <DataTemplate x:Key="TaskTemplate"
@@ -24,7 +26,6 @@
                     >
         <Views:TaskView />
       </DataTemplate>
-
     </ResourceDictionary>
   </Application.Resources>
 </Application>

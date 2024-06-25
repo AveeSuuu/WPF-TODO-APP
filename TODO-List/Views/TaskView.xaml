@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TODO_List.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utilities="clr-namespace:TODO_List.Utilities"
              d:DataContext="{d:DesignInstance Type=ViewModels:TaskViewModel}"
              d:DesignHeight="auto"
              d:DesignWidth="400"
@@ -24,7 +25,8 @@
         <ColumnDefinition Width="30" />
       </Grid.ColumnDefinitions>
       <StackPanel Grid.Column="0">
-        <Border Background="{DynamicResource DiscordDarkerGray}"
+        <Border Margin="0,0,-1,0"
+                Background="{DynamicResource DiscordDarkestGray}"
                 CornerRadius="15, 0, 0, 15"
                 >
           <TextBlock Style="{DynamicResource TaskTitleStyle}"
@@ -36,19 +38,18 @@
                    />
       </StackPanel>
       <Border Grid.Column="1"
-              Background="{DynamicResource DiscordDarkerGray}"
+              Background="{DynamicResource DiscordDarkestGray}"
               CornerRadius="0, 15, 15, 15"
               >
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     >
           <Button Command="{Binding FinishTaskCommand}"
-                  Content="✔️"
-                  Style="{StaticResource TaskButtonStyle}"
+                  Style="{StaticResource CheckTaskButtonStyle}"
                   />
           <Button Command="{Binding DeleteTaskCommand}"
                   Content="❌"
-                  Style="{StaticResource TaskButtonStyle}"
+                  Style="{StaticResource DefaultTaskButtonStyle}"
                   />
         </StackPanel>
       </Border>

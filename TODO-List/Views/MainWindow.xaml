@@ -6,12 +6,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:TODO_List"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="MainWindow"
+        Title="TODO App"
         Width="400"
         Height="580"
         d:DataContext="{d:DesignInstance Type=ViewModels:MainWindowViewModel}"
         AllowsTransparency="True"
         Background="Transparent"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         mc:Ignorable="d"
         >
@@ -49,12 +50,14 @@
                        Style="{StaticResource TaskTitleStyle}"
                        Text="TODO App"
                        />
-            <Button Margin="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Command="{Binding AddNewTaskCommand}"
+            <Button Command="{Binding AddNewTaskCommand}"
                     Content="➕"
-                    Style="{StaticResource TaskButtonStyle}"
+                    Style="{StaticResource MainWindowButtonStyle}"
+                    />
+            <Button Margin="-5,0,0,0"
+                    Command="{Binding SaveTasksCommand}"
+                    Content="💾"
+                    Style="{StaticResource MainWindowButtonStyle}"
                     />
           </StackPanel>
           <StackPanel Grid.Column="2"
@@ -62,19 +65,13 @@
                       DockPanel.Dock="Right"
                       Orientation="Horizontal"
                       >
-            <Button Margin="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Command="{Binding MinimizeAppCommand}"
+            <Button Command="{Binding MinimizeAppCommand}"
                     Content="➖"
-                    Style="{StaticResource TaskButtonStyle}"
+                    Style="{StaticResource MainWindowButtonStyle}"
                     />
-            <Button Margin="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Command="{Binding CloseAppCommand}"
+            <Button Command="{Binding CloseAppCommand}"
                     Content="✖️"
-                    Style="{StaticResource TaskButtonStyle}"
+                    Style="{StaticResource MainWindowButtonStyle}"
                     />
           </StackPanel>
         </Grid>
